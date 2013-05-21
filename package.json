@@ -1,0 +1,22 @@
+{
+  "name": "pg-test",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "description": "Test runner for PostgreSQL tests",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abrkn/pg-test.git"
+  },
+  "bin": {
+    "pg-test": "./bin/pg-test"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "expect.js": "~0.2.0",
+    "mocha": "~1.9.0",
+    "pg": "~1.1.0"
+  }
+}
