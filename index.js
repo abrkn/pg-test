@@ -11,15 +11,15 @@ var fs = require('fs')
 , path = require('path')
 , p = path.resolve(process.argv[2] || process.cwd())
 , files = fs.readdirSync(p).filter(function(fn) {
-    return fn.match((/\.sql$/))
+    return fn.match((/\.sql$/i))
 })
+client.connect()
 
 function next(cb) {
     var fn = files.shift()
-    if (!fn) return cb()
     console.log(fn)
     var q = fs.readFileSync(path.join(p, fn), 'utf8')
-    client.query(q, next)
+    client.query(q, files.length ? next.bind(this, cb) : cb)
 }
 
 next(function(err) {
