@@ -19,7 +19,11 @@ function next(cb) {
     var fn = files.shift()
     console.log(fn)
     var q = fs.readFileSync(path.join(p, fn), 'utf8')
-    client.query(q, files.length ? next.bind(this, cb) : cb)
+    client.query(q, function(err) {
+        if (err) return cb(err)
+        if (files.length) return next(cb)
+        cb()
+    })
 }
 
 next(function(err) {
