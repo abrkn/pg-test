@@ -17,10 +17,11 @@ client.connect()
 
 function next(cb) {
     var fn = files.shift()
-    console.log(fn)
+    process.stdout.write(fn + '...')
     var q = fs.readFileSync(path.join(p, fn), 'utf8')
     client.query(q, function(err) {
         if (err) return cb(err)
+        console.log('OK')
         if (files.length) return next(cb)
         cb()
     })
