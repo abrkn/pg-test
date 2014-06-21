@@ -15,7 +15,7 @@ var fs = require('fs')
 }).sort(function(a, b) {
     if (a == 'before.sql') return -1
     if (b == 'before.sql') return 1
-    return a.localCompare(b)
+    return a == b ? 0 : a < b ? -1 : 1
 })
 client.connect()
 
