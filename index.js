@@ -12,6 +12,10 @@ var fs = require('fs')
 , p = path.resolve(process.argv[2] || process.cwd())
 , files = fs.readdirSync(p).filter(function(fn) {
     return fn.match((/\.sql$/i))
+}).sort(function(a, b) {
+    if (a == 'before.sql') return -1
+    if (b == 'before.sql') return 1
+    return a.localCompare(b)
 })
 client.connect()
 
