@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "expect.js": "~0.2.0",
+    "expect.js": "~0.3.1",
     "mocha": "~1.9.0",
     "pg": "~8.0.0"
   }
